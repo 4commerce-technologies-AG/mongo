@@ -74,6 +74,9 @@ LIBRARY_FLAGS = {
     'arch:x64': {
       'CPPDEFINES':   ['V8_TARGET_ARCH_X64'],
     },
+    'arch:arm': {
+      'CPPDEFINES':   ['V8_TARGET_ARCH_ARM'],
+    },
   },
   'msvc': {
     'all': {
@@ -240,6 +243,26 @@ SOURCES = {
     x64/regexp-macro-assembler-x64.cc
     x64/stub-cache-x64.cc
     """),
+  'arch:arm': Split("""
+    arm/constants-arm.cc
+    arm/assembler-arm.cc
+    arm/builtins-arm.cc
+    arm/code-stubs-arm.cc
+    arm/codegen-arm.cc
+    arm/cpu-arm.cc
+    arm/debug-arm.cc
+    arm/deoptimizer-arm.cc
+    arm/disasm-arm.cc
+    arm/frames-arm.cc
+    arm/full-codegen-arm.cc
+    arm/ic-arm.cc
+    arm/lithium-codegen-arm.cc
+    arm/lithium-gap-resolver-arm.cc
+    arm/lithium-arm.cc
+    arm/macro-assembler-arm.cc
+    arm/regexp-macro-assembler-arm.cc
+    arm/stub-cache-arm.cc
+    """),
   'os:freebsd': ['platform-freebsd.cc', 'platform-posix.cc'],
   'os:linux':   ['platform-linux.cc', 'platform-posix.cc'],
   'os:macos':   ['platform-macos.cc', 'platform-posix.cc'],
@@ -291,6 +314,10 @@ def get_options():
         arch_string = 'arch:x64'
     elif processor == 'amd64':
         arch_string = 'arch:x64'
+    elif processor == 'armv6l':
+        arch_string = 'arch:arm'
+    elif processor == 'armv7l':
+        arch_string = 'arch:arm'
     else:
         assert False, "Unsupported architecture: " + processor
 
