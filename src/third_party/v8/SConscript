@@ -75,7 +75,8 @@ LIBRARY_FLAGS = {
       'CPPDEFINES':   ['V8_TARGET_ARCH_X64'],
     },
     'arch:arm': {
-      'CPPDEFINES':   ['V8_TARGET_ARCH_ARM'],
+      'CPPDEFINES':   ['V8_TARGET_ARCH_ARM', 'USE_EABI_HARDFLOAT=1'],
+      'CCFLAGS':      ['-mfloat-abi=hard'],
     },
   },
   'msvc': {
